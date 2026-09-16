@@ -1,0 +1,188 @@
+@import './login.css';
+
+/* Form layout for two inputs side by side */
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row > * {
+  flex: 1;
+}
+
+/* Signup specific input tweaks */
+.terms-conditions-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 25px;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.terms-conditions-container input[type="checkbox"] {
+  margin-top: 2px;
+}
+
+.terms-label {
+  line-height: 1.35;
+}
+
+.terms-link {
+  color: #c084fc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.terms-link:hover {
+  color: #a855f7;
+  text-decoration: underline;
+}
+
+/* Success Modal Popup */
+.success-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.success-modal {
+  width: 90%;
+  max-width: 400px;
+  background: rgba(30, 41, 59, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: slideUpIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.success-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  background: rgba(52, 211, 153, 0.1);
+  border: 2px solid var(--success-color);
+  color: var(--success-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 20px;
+  animation: scalePop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.5) 0.2s both;
+}
+
+.success-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.redirect-countdown {
+  font-size: 0.85rem;
+  color: #c084fc;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scalePop {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Password criteria feedback styles */
+.password-criteria-list {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.2);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  list-style: none;
+}
+
+.criteria-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.criteria-item:last-child {
+  margin-bottom: 0;
+}
+
+.criteria-item.valid {
+  color: var(--success-color);
+}
+
+.criteria-item.invalid {
+  color: var(--err-color);
+}
+
+.criteria-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive updates for grid row */
+@media (max-width: 580px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

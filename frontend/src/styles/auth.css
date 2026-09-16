@@ -1,0 +1,364 @@
+:root {
+  --brand-primary: #1565c0;
+  --brand-secondary: #1976d2;
+  --text-dark: #123357;
+  --text-soft: #5b7694;
+  --card: #ffffff;
+  --danger: #cc3d3d;
+  --success: #2f9e6f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 18px;
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-shape {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(1px);
+  opacity: 0.2;
+  animation: floatSoft 12s ease-in-out infinite;
+}
+
+.bg-shape-one {
+  width: 320px;
+  height: 320px;
+  background: #8ec5ff;
+  top: -120px;
+  left: -90px;
+}
+
+.bg-shape-two {
+  width: 280px;
+  height: 280px;
+  background: #0d47a1;
+  right: -90px;
+  bottom: -110px;
+  animation-delay: 2.2s;
+}
+
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 470px;
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: 0 20px 60px rgba(5, 40, 92, 0.28);
+  padding: 34px 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-card-wide {
+  max-width: 560px;
+}
+
+.auth-fade-in {
+  animation: fadeRise 420ms ease;
+}
+
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-brand {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.auth-brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: var(--brand-primary);
+  letter-spacing: 0.06em;
+  font-weight: 800;
+}
+
+.auth-brand p {
+  margin: 10px 0 0;
+  font-size: 0.99rem;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+.auth-helper {
+  margin: 0 0 16px;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.auth-form {
+  display: grid;
+  gap: 14px;
+}
+
+.field-group {
+  display: grid;
+  gap: 7px;
+}
+
+.field-label {
+  color: var(--text-dark);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.field-shell {
+  border: 1px solid #c9def6;
+  background: #f5faff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.field-shell:focus-within {
+  border-color: var(--brand-secondary);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+}
+
+.field-shell-error {
+  border-color: #f2a8a8;
+  background: #fff8f8;
+}
+
+.field-icon {
+  color: #5d86b6;
+  margin-right: 8px;
+  flex: 0 0 auto;
+}
+
+.field-input {
+  height: 48px;
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  color: #1f3f63;
+  font-size: 0.97rem;
+}
+
+.field-input::placeholder {
+  color: #88a2bd;
+}
+
+.field-toggle {
+  border: none;
+  background: transparent;
+  color: #477cb5;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.field-error {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--danger);
+}
+
+.captcha-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.captcha-box {
+  flex: 1;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 1px dashed #8bb8e6;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  color: #124c8f;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  font-size: 1.08rem;
+}
+
+.captcha-refresh {
+  border: none;
+  background: #e9f3ff;
+  color: #1658a6;
+  border-radius: 12px;
+  height: 48px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.auth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-link {
+  color: var(--brand-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.auth-submit {
+  margin-top: 4px;
+  border: none;
+  border-radius: 12px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 170ms ease, box-shadow 170ms ease;
+}
+
+.auth-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(21, 101, 192, 0.25);
+}
+
+.auth-submit:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.auth-footer-text {
+  margin: 18px 0 0;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.auth-footer-text a {
+  color: var(--brand-primary);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.auth-footer-text a:hover {
+  text-decoration: underline;
+}
+
+.auth-admin-footer {
+  margin-top: 10px;
+}
+
+.auth-footer-divider {
+  margin: 10px 0;
+  color: var(--text-soft);
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.auth-alert {
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.auth-alert-error {
+  background: #ffecec;
+  color: #ac2f2f;
+  border: 1px solid #ffd0d0;
+}
+
+.auth-alert-success {
+  background: #ecfff5;
+  color: #1f835b;
+  border: 1px solid #c7f1dd;
+}
+
+.loader-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loader-spinner {
+  width: 17px;
+  height: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.password-check-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.password-check-grid span {
+  border-radius: 999px;
+  font-size: 0.78rem;
+  padding: 4px 9px;
+  background: #e7eff8;
+  color: #6485a8;
+}
+
+.password-check-grid span.ok {
+  background: #ddf5e9;
+  color: #2d865d;
+}
+
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 28px 18px;
+  }
+
+  .auth-brand h1 {
+    font-size: 1.2rem;
+  }
+
+  .captcha-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

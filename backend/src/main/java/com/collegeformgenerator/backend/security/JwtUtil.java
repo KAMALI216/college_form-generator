@@ -1,0 +1,66 @@
+package com.collegeformgenerator.backend.security;
+
+import com.collegeformgenerator.backend.entity.UserRole;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
+
+@Component
+public class JwtUtil {
+
+    private final SecretKey key;
+    private final long expirationMs;
+
+    public JwtUtil(
+            @Value("${jwt.secret:a-long-random-development-secret-change-this}") String secret,
+            @Value("${jwt.expiration-ms:86400000}") long expirationMs) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        this.expirationMs = expirationMs;
+    }
+
+    public String generateToken(Integer userId, UserRole role) {
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + expirationMs);
+
+        return Jwts.builder()
+                .subject(String.valueOf(userId))
+                .claim("role", role.name())
+                .issuedAt(now)
+                .expiration(expiryDate)
+                .signWith(key)
+                .compact();
+    }
+
+    public Claims getClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+    }
+
+    public Integer extractUserId(String token) {
+        String subject = getClaims(token).getSubject();
+        return Integer.valueOf(subject);
+    }
+
+    public UserRole extractRole(String token) {
+        String roleStr = getClaims(token).get("role", String.class);
+        return UserRole.valueOf(roleStr);
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            getClaims(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+}

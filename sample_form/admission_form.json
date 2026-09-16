@@ -1,0 +1,51 @@
+{
+  "formId": "university_admission_2026",
+  "title": "University Admission Form",
+  "fields": [
+    {
+      "id": "fullName",
+      "label": "Full Name",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile Number",
+      "type": "tel",
+      "required": true
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "type": "email",
+      "required": true
+    },
+    {
+      "id": "level",
+      "label": "Level",
+      "type": "radio",
+      "required": true,
+      "options": [
+        "UG",
+        "PG",
+        "Diploma",
+        "PhD"
+      ]
+    },
+    {
+      "id": "branch",
+      "label": "Branch",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Computer Science & Engineering",
+        "Electronics & Communication Engineering",
+        "Electrical & Electronics Engineering",
+        "Mechanical Engineering",
+        "Civil Engineering",
+        "Information Technology",
+        "Artificial Intelligence & Data Science"
+      ]
+    }
+  ]
+}
